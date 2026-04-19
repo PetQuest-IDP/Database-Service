@@ -38,4 +38,10 @@ public class RefreshTokenController {
         refreshTokenService.deleteByToken(token);
         return ResponseEntity.ok().build();
     }
+
+    @DeleteMapping("/all")
+    public ResponseEntity<Void> deleteAllByEmail(@RequestParam String email) {
+        refreshTokenService.deleteAllByEmail(email);
+        return ResponseEntity.ok().build();
+    }
 }
