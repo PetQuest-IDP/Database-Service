@@ -35,8 +35,12 @@ public class RefreshTokenController {
 
     @DeleteMapping
     public ResponseEntity<Void> deleteByToken(@RequestParam String token) {
-        refreshTokenService.deleteByToken(token);
-        return ResponseEntity.ok().build();
+        boolean wasDeleted = refreshTokenService.deleteByToken(token);
+
+        if (wasDeleted) {
+            return ResponseEntity.ok().build();
+        }
+        return ResponseEntity.notFound().build();
     }
 
     @DeleteMapping("/all")

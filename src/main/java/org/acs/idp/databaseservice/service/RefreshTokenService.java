@@ -34,8 +34,8 @@ public class RefreshTokenService {
     }
 
     @Transactional
-    public void deleteByToken(String token) {
-        refreshTokenRepository.deleteByToken(token);
+    public boolean deleteByToken(String token) {
+        return refreshTokenRepository.deleteByToken(token) > 0;
     }
 
     @Transactional
